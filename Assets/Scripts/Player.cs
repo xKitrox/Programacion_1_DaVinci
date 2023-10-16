@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
 
     public float linealForce; //mover en linea recta
     public float angularForce; //Rotar
-    public float jumpForce;
     public float maxiumhealth;
     public float health;
     private Rigidbody2D rb;
