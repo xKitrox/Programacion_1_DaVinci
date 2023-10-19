@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     public float lifespan;
 
 
+
     private Rigidbody2D myrigidbody2D;
 
     private void Awake()
@@ -29,6 +30,12 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();
+
+        if (collision.gameObject.layer == 7)
+        {
+            Destroy(collision.gameObject);
+        }
+
 
         if (player != null)
         {

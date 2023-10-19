@@ -58,14 +58,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         
-
-        
-
         rb.AddRelativeForce(linealForce * axisV * Vector2.up);
 
        
         rb.AddTorque(-angularForce * axisH);
-
+        
     }
 
     private GameObject collideWith;
@@ -74,7 +71,6 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        Debug.Log("Entre en " + collision.gameObject);
 
 
 
@@ -84,26 +80,27 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Estoy en " + collision.gameObject);
+        
     }
 
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("Sali de " + collision.gameObject);
+        /*
         if (collideWith == collideWith.gameObject)
         {
 
             collision = null;
 
         }
+        */
     }
 
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int amount)
     {
 
-        health -= damage;
+        health -= amount;
 
         if (health <= 0)
         {

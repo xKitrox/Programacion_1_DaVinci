@@ -11,6 +11,10 @@ public class Trap : MonoBehaviour
 
     private void Update()
     {
+
+        Patrol();
+        
+
         if (player != null)
         {
             timer += Time.deltaTime;
@@ -19,7 +23,7 @@ public class Trap : MonoBehaviour
                 timer = 0;
                 player.TakeDamage(damage);
             }
-
+            
         }
 
     }
@@ -55,5 +59,45 @@ public class Trap : MonoBehaviour
 
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 7)
+        {
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+        }
+        
+    }
+
+    [SerializeField]
+    private float movmentSpeed;
+
+    [SerializeField]
+    private Transform[] waypoints;
+
+    
+
+    private int index = 0;
+
+
+    public void Patrol()
+    {
+        if (waypoints.Length == 0)
+        {
+            return;
+        }
+        Transform target = waypoints[index];
+
+        transform.position = Vector3.MoveTowards(transform.position, target.position, movmentSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, target.position) < 0.1f)
+        {
+            index++;
+            if (index >= waypoints.Length)
+            {
+                index = 0;
+            }
+        }
     }
 }
