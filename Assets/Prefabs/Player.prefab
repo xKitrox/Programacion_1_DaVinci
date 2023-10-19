@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3967249127063930311}
   - component: {fileID: 15238075425909552}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2061274713
-  m_SortingLayer: 5
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.38319343, g: 0.5188679, b: 0.28146136, a: 1}
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1579251551112796735}
   - component: {fileID: 1844101792906873322}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rueda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3317702838481239101}
   - component: {fileID: 158830189742123036}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8764708981983365723}
   - component: {fileID: 963057965339282573}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rueda (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1703045161639807853}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ruedas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

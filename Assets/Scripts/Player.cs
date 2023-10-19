@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
 
     public float linealForce; //mover en linea recta
     public float angularForce; //Rotar
-    public float maxiumhealth;
-    public float health;
+    public float maxiumhealth = 15f;
+    public float health = 15f;
     private Rigidbody2D rb;
 
     private Cannon[] cannons;
@@ -65,16 +65,11 @@ public class Player : MonoBehaviour
         
     }
 
-    private GameObject collideWith;
+    
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-
-
-
-
 
     }
 
@@ -86,14 +81,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        /*
-        if (collideWith == collideWith.gameObject)
-        {
-
-            collision = null;
-
-        }
-        */
+        
     }
 
 
@@ -105,14 +93,15 @@ public class Player : MonoBehaviour
         if (health <= 0)
         {
             print("Me mori");
+            Destroy(gameObject);
         }
         else
         {
-            print("Me lastimaron " + health);
+            print("Me lastimaron, vida actual: " + health);
         }
     }
 
-
+    
     public bool TakeHealing(int healing)
     {
 
@@ -131,4 +120,5 @@ public class Player : MonoBehaviour
         return true;
 
     }
+    
 }

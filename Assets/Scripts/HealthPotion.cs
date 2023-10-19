@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class HealthPotion : MonoBehaviour
 {
-    private int healing;
+    public int healing = 5;
+
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,4 +24,5 @@ public class HealthPotion : MonoBehaviour
         }
 
     }
+    
 }

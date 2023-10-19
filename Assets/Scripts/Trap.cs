@@ -29,9 +29,11 @@ public class Trap : MonoBehaviour
     }
 
     private Player player;
-    private void OnTriggerEnter2D(Collider2D other)
+   
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Player player = other.gameObject.GetComponentInParent<Player>();
+        Player player = collision.gameObject.GetComponentInParent<Player>();
         if (player != null)
         {
             this.player = player;
@@ -41,11 +43,14 @@ public class Trap : MonoBehaviour
 
 
         }
-
+        if (collision.gameObject.layer == 7)
+        {
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+        }
+        
     }
 
-
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         Player player = collision.gameObject.GetComponentInParent<Player>();
         if (player != null)
@@ -61,14 +66,8 @@ public class Trap : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 7)
-        {
-            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
-        }
-        
-    }
+
+    //Patrol
 
     [SerializeField]
     private float movmentSpeed;
