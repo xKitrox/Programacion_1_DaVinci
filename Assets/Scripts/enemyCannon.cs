@@ -9,16 +9,14 @@ public class enemyCannon : MonoBehaviour
     public Bullet prefab;
 
     
-    public void Shoot()
+    public void Attack()
     {
         Bullet bullet = Instantiate(prefab, shootingPoint.position, shootingPoint.rotation);
         bullet.speed = speed;
 
+
     }
-    public virtual void Attack()
-    {
-        Shoot();
-    }
+    
 
 
 }

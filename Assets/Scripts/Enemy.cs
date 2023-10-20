@@ -16,13 +16,26 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float health;
 
+    [SerializeField]
     private Player player;
+    [SerializeField]
     private enemyCannon enemyCannon;
+    [SerializeField]
     private HealthPotion prefabH;
 
     private void Update()
     {
-        Patrol();
+        if (Vector3.Distance(transform.position, player.transform.position) < 2f)
+        {
+            Shoot();
+
+        }
+        else
+        {
+            Patrol();
+
+        }
+        
     }
 
     private int index = 0;
@@ -67,7 +80,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-
+            print("Mataste al enemigo");
             HealthPotion health = Instantiate(prefabH, droPoint.position, droPoint.rotation);
         }
         else
