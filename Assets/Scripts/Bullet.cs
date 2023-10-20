@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed;
     public float lifespan;
+    public int damage = 5;
 
 
 
@@ -30,14 +31,24 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();
-
+        //destroy trap
         if (collision.gameObject.layer == 7)
         {
             Destroy(collision.gameObject);
         }
+        //damage a enemy
+        else if (collision.gameObject.layer == 9)
+        {
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+        }
+        //damage a player
+        else if (collision.gameObject.layer == 3)
+        {
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+        }
 
 
-        if (player != null)
+        else if (player != null)
         {
 
             player.TakeDamage(1);
@@ -50,4 +61,5 @@ public class Bullet : MonoBehaviour
 
 
     }
+
 }

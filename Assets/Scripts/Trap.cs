@@ -14,58 +14,22 @@ public class Trap : MonoBehaviour
 
         Patrol();
         
-
-        if (player != null)
-        {
-            timer += Time.deltaTime;
-            if (timer >= 1)
-            {
-                timer = 0;
-                player.TakeDamage(damage);
-            }
-            
-        }
+        
 
     }
 
     private Player player;
-   
 
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Player player = collision.gameObject.GetComponentInParent<Player>();
-        if (player != null)
-        {
-            this.player = player;
-            counter++;
-            timer = 0;
 
-
-
-        }
-        if (collision.gameObject.layer == 7)
+        if (collision.gameObject.layer == 3)
         {
             collision.gameObject.GetComponent<Player>().TakeDamage(damage);
         }
-        
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        Player player = collision.gameObject.GetComponentInParent<Player>();
-        if (player != null)
-        {
-            counter--;
-            if (counter == 0)
-            {
-                this.player = null;
-            }
-
-
-        }
 
     }
-
 
     //Patrol
 

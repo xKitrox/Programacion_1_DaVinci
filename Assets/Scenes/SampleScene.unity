@@ -133,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1927489}
   - component: {fileID: 1927490}
+  - component: {fileID: 1927491}
   m_Layer: 9
-  m_Name: Cannon (1)
+  m_Name: EnemyCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,6 +209,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1927491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c848ca6585d64f2458aa08714b815256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  shootingPoint: {fileID: 2099848463}
+  prefab: {fileID: 1664112433741201406, guid: 1ce6df884bf21a9469f5f5424541a51f, type: 3}
 --- !u!1001 &26899154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2959,7 +2975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5243732604753880222, guid: 3b64fa6afebbd2248af385328dcfc5ba, type: 3}
       propertyPath: m_Name
-      value: Health-tank (1)
+      value: HealthPotion3
       objectReference: {fileID: 0}
     - target: {fileID: 5243732604753880222, guid: 3b64fa6afebbd2248af385328dcfc5ba, type: 3}
       propertyPath: m_Layer
@@ -3265,7 +3281,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5243732604753880222, guid: 3b64fa6afebbd2248af385328dcfc5ba, type: 3}
       propertyPath: m_Name
-      value: Health-tank (2)
+      value: HealthPotion2
       objectReference: {fileID: 0}
     - target: {fileID: 7432084074894361863, guid: 3b64fa6afebbd2248af385328dcfc5ba, type: 3}
       propertyPath: m_RootOrder
@@ -70201,7 +70217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  movmentSpeed: 2
+  movmentSpeed: 4
   waypoints:
   - {fileID: 599784588}
   - {fileID: 1398879510}
@@ -70361,10 +70377,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e8a8949b410834eb6a4492c22c0f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movmentSpeed: 2
+  movmentSpeed: 3
+  damage: 3
   waypoints:
   - {fileID: 1652189088}
   - {fileID: 960492544}
+  droPoint: {fileID: 2103747632}
+  health: 15
 --- !u!212 &1447993831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -70424,16 +70443,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447993829}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.78, y: -0.93, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.70710677, w: 0.7071068}
+  m_LocalPosition: {x: 30.939434, y: -0.7814357, z: 0}
   m_LocalScale: {x: 1.2475, y: 1.2475, z: 1.2475}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1927489}
   - {fileID: 1289676182}
+  - {fileID: 2103747632}
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!58 &1447993833
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -70699,6 +70719,37 @@ Transform:
   m_Father: {fileID: 1927489}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2103747631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2103747632}
+  m_Layer: 9
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2103747632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103747631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1447993832}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2114367077
 GameObject:
   m_ObjectHideFlags: 0
@@ -70962,7 +71013,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5243732604753880222, guid: 3b64fa6afebbd2248af385328dcfc5ba, type: 3}
       propertyPath: m_Name
-      value: Health-tank
+      value: HealthPotion
       objectReference: {fileID: 0}
     - target: {fileID: 7432084074894361863, guid: 3b64fa6afebbd2248af385328dcfc5ba, type: 3}
       propertyPath: m_RootOrder
