@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class enemyCannon : MonoBehaviour
 {
+    [Header("Bullet settings")]
     public int speed;
     public Transform shootingPoint;
     public Bullet prefab;
@@ -13,10 +14,5 @@ public class enemyCannon : MonoBehaviour
     {
         Bullet bullet = Instantiate(prefab, shootingPoint.position, shootingPoint.rotation);
         bullet.speed = speed;
-
-
     }
-    
-
-
 }

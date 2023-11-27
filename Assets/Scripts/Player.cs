@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class Player : MonoBehaviour
 {
-
+    [Header("Player Settings")]
     public float linealForce; //mover en linea recta
     public float angularForce; //Rotar
     public float maxiumhealth = 15f;
     public float health = 15f;
     private Rigidbody2D rb;
-
     private Cannon[] cannons;
 
+    [Header("Menu Settings")]
+    public Canvas menu;
 
     float axisH;
     float axisV;
@@ -24,70 +22,31 @@ public class Player : MonoBehaviour
         {
             Debug.LogError($"No se  encontro el componente {nameof(rb)}");
         }
-
         cannons = GetComponentsInChildren<Cannon>();
-
-
     }
 
-    
     void Update()
     {
         axisH = Input.GetAxisRaw("Horizontal");
         axisV = Input.GetAxisRaw("Vertical");
 
-        
-
         if (Input.GetKeyDown(KeyCode.F))
         {
             for (int i = 0; i < cannons.Length; i++)
             {
-
                 cannons[i].Shoot();
-
             }
-
         }
-
-
-
     }
-
-
 
     private void FixedUpdate()
     {
-        
         rb.AddRelativeForce(linealForce * axisV * Vector2.up);
-
-       
         rb.AddTorque(-angularForce * axisH);
-        
     }
-
-    
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        
-    }
-
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        
-    }
-
 
     public void TakeDamage(int amount)
     {
-
         health -= amount;
 
         if (health <= 0)
@@ -101,15 +60,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    
     public bool TakeHealing(int healing)
     {
-
         if (health == maxiumhealth)
         {
             return false;
         }
-
         //health = Mathf.Min(health + healing, maxiumhealth);
         health += healing;
         if (health > maxiumhealth)
@@ -118,7 +74,5 @@ public class Player : MonoBehaviour
         }
         Debug.Log("Me sanaron " + health);
         return true;
-
     }
-    
 }

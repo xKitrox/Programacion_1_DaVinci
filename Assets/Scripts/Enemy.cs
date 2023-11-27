@@ -1,44 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Enemy Settings")]
     [SerializeField]
     private float movmentSpeed;
     [SerializeField]
+    private float health;
+    [SerializeField]
     private int damage = 5;
 
+    [Header("Enemy Patrol Settings")]
+
+    [SerializeField]
+    private float shootingInterval = 5f;
+    [SerializeField]
+    private bool canShoot = true;
+    [Header("Enemy Patrol Settings")]
     [SerializeField]
     private Transform[] waypoints;
     public Transform droPoint;
-
-    [SerializeField]
-    private float health;
-
-    [SerializeField]
-    private Player player;
     [SerializeField]
     private enemyCannon enemyCannon;
+    [SerializeField]
+    private float minRangeShoting = 20f;
+    [SerializeField]
+    private int patrolIndex = 0;
+    
+    [Header("Player and Consumables Settings")]
+    [SerializeField]
+    private Player player;
     [SerializeField]
     private HealthPotion prefabH;
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 2f)
+        if (Vector3.Distance(transform.position, player.transform.position) < minRangeShoting)
         {
-            Shoot();
-
+            RotateTowardsPlayer();
+            if (canShoot)
+            {
+                canShoot = false;
+                StartCoroutine(shootingCooldown(shootingInterval));
+            }
         }
         else
         {
             Patrol();
-
         }
-        
     }
-
-    private int index = 0;
 
     
     public void Patrol()
@@ -47,16 +60,16 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        Transform target = waypoints[index];
+        Transform target = waypoints[patrolIndex];
 
         transform.position = Vector3.MoveTowards(transform.position, target.position, movmentSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, target.position) < 0.1f)
         {
-            index++;
-            if (index >= waypoints.Length)
+            patrolIndex++;
+            if (patrolIndex >= waypoints.Length)
             {
-                index = 0;
+                patrolIndex = 0;
             }
         }
     }
@@ -74,14 +87,13 @@ public class Enemy : MonoBehaviour
     //Take damage
     public void TakeDamage(int amount)
     {
-
         health -= amount;
 
         if (health <= 0)
         {
             Destroy(gameObject);
             print("Mataste al enemigo");
-            HealthPotion health = Instantiate(prefabH, droPoint.position, droPoint.rotation);
+            HealthPotion healthPotion = Instantiate(prefabH, droPoint.position, droPoint.rotation);
         }
         else
         {
@@ -89,21 +101,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //lock player and shoot
-    private void Shoot()
+    //Look player
+    private void RotateTowardsPlayer()
     {
         Vector3 target = player.transform.position;
 
-        transform.rotation = GetTargetRotation(target);
-        enemyCannon.Attack();
+        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, -1 * (transform.position - target));
+        transform.rotation = Quaternion.LerpUnclamped(transform.rotation, targetRotation, 30 * Time.deltaTime);
     }
-
-    private Quaternion GetTargetRotation(Vector3 target)
+    //Shoot
+    private IEnumerator shootingCooldown(float interval)
     {
-        Vector3 direction = transform.position - target;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        return Quaternion.AngleAxis(angle, Vector3.forward);
+        enemyCannon.Attack();
+        yield return new WaitForSeconds(interval);
+        canShoot = true;
     }
-    
-
 }

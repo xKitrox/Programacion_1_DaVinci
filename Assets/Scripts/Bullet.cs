@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("Bullet Settings")]
     public float speed;
     public float lifespan;
     public int damage = 5;
-
-
 
     private Rigidbody2D myrigidbody2D;
 
@@ -24,8 +23,6 @@ public class Bullet : MonoBehaviour
     {
         Quaternion rotation = Quaternion.Euler(0f, 0f, myrigidbody2D.rotation);
         myrigidbody2D.MovePosition(myrigidbody2D.position + speed * Time.fixedDeltaTime * (Vector2)(rotation * Vector2.up));
-
-
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -47,19 +44,12 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<Player>().TakeDamage(damage);
         }
 
-
         else if (player != null)
         {
 
             player.TakeDamage(1);
 
         }
-
-
-
         Destroy(gameObject);
-
-
     }
-
 }
