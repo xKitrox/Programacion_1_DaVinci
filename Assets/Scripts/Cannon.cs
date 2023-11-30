@@ -14,13 +14,13 @@ public class Cannon : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        isAttacking = true;
     }
     public void Shoot()
     {
         
         if (Input.GetKeyDown(KeyCode.F))
         {
-            isAttacking = true;
             animator.SetBool("isAttacking", true);
             Bullet bullet = Instantiate(prefab, shootingPoint.position, shootingPoint.rotation);
             bullet.speed = speed;
@@ -28,15 +28,17 @@ public class Cannon : MonoBehaviour
         else
         {
             animator.SetBool("isAttacking", false);
+
         }
     }
 
 
     private void FixedUpdate()
     {
-        if (isAttacking)
+        if (isAttacking == true)
         {
-            return;
+            animator.SetBool("isAttacking", false);
+
         }
         
     }

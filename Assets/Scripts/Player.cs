@@ -9,7 +9,10 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private Cannon[] cannons;
+    public AudioSource audioSource;
+    public AudioClip fireSound, repairSound, damageSound;
     private int idMoving = Animator.StringToHash("isMoving");
+
 
     [Header("Menu Settings")]
     public Canvas menu;
@@ -26,6 +29,7 @@ public class Player : MonoBehaviour
         }
         cannons = GetComponentsInChildren<Cannon>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -35,6 +39,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
+            audioSource.PlayOneShot(fireSound);
             for (int i = 0; i < cannons.Length; i++)
             {
                 cannons[i].Shoot();
@@ -57,12 +62,16 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        //play damage sound
+        audioSource.PlayOneShot(damageSound);
+        //reducir vida
         health -= amount;
 
         if (health <= 0)
         {
-            print("Me mori");
-            Destroy(gameObject);
+            //print("Me mori");
+            Die();
+            
         }
         else
         {
@@ -82,7 +91,16 @@ public class Player : MonoBehaviour
         {
             health = maxiumhealth;
         }
+        //play audio repair
+        audioSource.PlayOneShot(repairSound);
+
         Debug.Log("Me sanaron " + health);
         return true;
+    }
+
+    //Die para destruir objeto
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }
