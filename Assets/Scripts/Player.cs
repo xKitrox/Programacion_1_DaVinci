@@ -7,7 +7,9 @@ public class Player : MonoBehaviour
     public float maxiumhealth = 15f;
     public float health = 15f;
     private Rigidbody2D rb;
+    private Animator animator;
     private Cannon[] cannons;
+    private int idMoving = Animator.StringToHash("isMoving");
 
     [Header("Menu Settings")]
     public Canvas menu;
@@ -23,6 +25,7 @@ public class Player : MonoBehaviour
             Debug.LogError($"No se  encontro el componente {nameof(rb)}");
         }
         cannons = GetComponentsInChildren<Cannon>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -41,8 +44,15 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         rb.AddRelativeForce(linealForce * axisV * Vector2.up);
         rb.AddTorque(-angularForce * axisH);
+    }
+
+
+    private void LateUpdate()
+    {
+        animator.SetBool(idMoving, axisH != 0 || axisV != 0);
     }
 
     public void TakeDamage(int amount)
