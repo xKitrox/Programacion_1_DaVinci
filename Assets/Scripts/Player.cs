@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip fireSound, repairSound, damageSound;
     private int idMoving = Animator.StringToHash("isMoving");
+    public sceneLoader loader;
 
 
     [Header("Menu Settings")]
@@ -102,5 +103,6 @@ public class Player : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
+        loader.LoadScene("Lose");
     }
 }

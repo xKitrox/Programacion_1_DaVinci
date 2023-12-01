@@ -11,7 +11,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float health;
     [SerializeField]
-    private int damage = 5;
+    private int damage = 5; 
+    public AudioSource audioSource;
+    public AudioClip fireSound, damageSound;
+    private Animator animator;
+    private int idMoving = Animator.StringToHash("isMoving");
 
     [Header("Enemy Patrol Settings")]
 
@@ -36,8 +40,15 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private HealthPotion prefabH;
 
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+    }
     private void Update()
     {
+        animator.SetBool(idMoving, true);
         if (Vector3.Distance(transform.position, player.transform.position) < minRangeShoting)
         {
             RotateTowardsPlayer();
@@ -72,6 +83,15 @@ public class Enemy : MonoBehaviour
                 patrolIndex = 0;
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        if (patrolIndex < 0)
+        {
+            animator.SetBool(idMoving, false);
+        }
+        
     }
 
     //Take contact damage
