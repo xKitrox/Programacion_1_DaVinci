@@ -37,6 +37,7 @@ public class Cannon : MonoBehaviour
     {
         if (isAttacking == true)
         {
+            
             animator.SetBool("isAttacking", false);
 
         }

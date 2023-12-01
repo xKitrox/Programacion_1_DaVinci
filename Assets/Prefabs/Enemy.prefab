@@ -103,16 +103,16 @@ MonoBehaviour:
   movmentSpeed: 3
   health: 15
   damage: 3
-  shootingInterval: 2
+  shootingInterval: 3
   canShoot: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   droPoint: {fileID: 3587342686207982843}
   enemyCannon: {fileID: 3587342687205618056}
-  minRangeShoting: 25
+  minRangeShoting: 10
   patrolIndex: 0
-  player: {fileID: 0}
+  player: {fileID: 2198016632568473822, guid: 6bd81cb2a2dddbc43b5de2e0812c7bc9, type: 3}
   prefabH: {fileID: -6863803718367178221, guid: 3b64fa6afebbd2248af385328dcfc5ba, type: 3}
 --- !u!58 &3587342685757749538
 CircleCollider2D:
