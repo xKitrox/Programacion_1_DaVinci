@@ -99,6 +99,11 @@ public class Player : MonoBehaviour
         return true;
     }
 
+    public void WinGame()
+    {
+        loader.LoadScene("Win");
+    }
+
     //Die para destruir objeto
     public void Die()
     {
