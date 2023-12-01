@@ -3143,6 +3143,10 @@ PrefabInstance:
       propertyPath: loader
       value: 
       objectReference: {fileID: 54388163}
+    - target: {fileID: 2198016632568473822, guid: 6bd81cb2a2dddbc43b5de2e0812c7bc9, type: 3}
+      propertyPath: dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 76492a6a46219a74c85a9953db6f188a, type: 3}
     - target: {fileID: 3967249127063930311, guid: 6bd81cb2a2dddbc43b5de2e0812c7bc9, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3572,6 +3576,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1801949800}
+    - target: {fileID: 3587342685757749549, guid: 4130583e75f9c6145904ca6d273b2228, type: 3}
+      propertyPath: fireSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6000369d647196f4298ecfee95e0a6c3, type: 3}
+    - target: {fileID: 3587342685757749549, guid: 4130583e75f9c6145904ca6d273b2228, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 76492a6a46219a74c85a9953db6f188a, type: 3}
     - target: {fileID: 3587342685757749549, guid: 4130583e75f9c6145904ca6d273b2228, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 

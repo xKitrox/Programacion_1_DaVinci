@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int damage = 5; 
     public AudioSource audioSource;
-    public AudioClip fireSound, damageSound;
+    public AudioClip fireSound, damageSound, dieSound;
     private Animator animator;
     private int idMoving = Animator.StringToHash("isMoving");
 
@@ -54,8 +54,10 @@ public class Enemy : MonoBehaviour
             RotateTowardsPlayer();
             if (canShoot)
             {
+                
                 canShoot = false;
                 StartCoroutine(shootingCooldown(shootingInterval));
+                
             }
         }
         else
@@ -111,13 +113,14 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            
             Destroy(gameObject);
-            print("Mataste al enemigo");
+            //print("Mataste al enemigo");
             HealthPotion healthPotion = Instantiate(prefabH, droPoint.position, droPoint.rotation);
         }
         else
         {
-            print("Lastimaste al enemigo, su vida es de: " + health);    
+            //print("Lastimaste al enemigo, su vida es de: " + health);    
         }
     }
 
@@ -132,6 +135,7 @@ public class Enemy : MonoBehaviour
     //Shoot
     private IEnumerator shootingCooldown(float interval)
     {
+        
         enemyCannon.Attack();
         yield return new WaitForSeconds(interval);
         canShoot = true;

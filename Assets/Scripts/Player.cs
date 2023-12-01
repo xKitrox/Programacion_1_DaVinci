@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private Cannon[] cannons;
     public AudioSource audioSource;
-    public AudioClip fireSound, repairSound, damageSound;
+    public AudioClip fireSound, repairSound, damageSound, dieSound;
     private int idMoving = Animator.StringToHash("isMoving");
     public sceneLoader loader;
 
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            print("Me lastimaron, vida actual: " + health);
+            //print("Me lastimaron, vida actual: " + health);
         }
     }
 
@@ -95,13 +95,14 @@ public class Player : MonoBehaviour
         //play audio repair
         audioSource.PlayOneShot(repairSound);
 
-        Debug.Log("Me sanaron " + health);
+        //Debug.Log("Me sanaron " + health);
         return true;
     }
 
     //Die para destruir objeto
     public void Die()
     {
+        audioSource.PlayOneShot(dieSound);
         Destroy(gameObject);
         loader.LoadScene("Lose");
     }

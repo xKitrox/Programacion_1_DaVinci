@@ -105,8 +105,9 @@ MonoBehaviour:
   health: 15
   damage: 3
   audioSource: {fileID: 0}
-  fireSound: {fileID: 0}
-  damageSound: {fileID: 0}
+  fireSound: {fileID: 8300000, guid: 6000369d647196f4298ecfee95e0a6c3, type: 3}
+  damageSound: {fileID: 8300000, guid: b775e1441f1b84442a7402adab4a2227, type: 3}
+  dieSound: {fileID: 8300000, guid: 76492a6a46219a74c85a9953db6f188a, type: 3}
   shootingInterval: 3
   canShoot: 1
   waypoints:
