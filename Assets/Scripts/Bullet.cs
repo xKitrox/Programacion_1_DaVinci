@@ -8,14 +8,17 @@ public class Bullet : MonoBehaviour
     public float speed;
     public float lifespan;
     public int damage = 5;
+    private Animator animator;
 
     private Rigidbody2D myrigidbody2D;
 
     private void Awake()
     {
         myrigidbody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         Destroy(gameObject, lifespan);
+        animator.SetBool("isDestroied", false);
 
     }
 
@@ -28,6 +31,7 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();
+        animator.SetBool("isDestroied", true);
         //destroy trap
         if (collision.gameObject.layer == 7)
         {
@@ -50,6 +54,8 @@ public class Bullet : MonoBehaviour
             player.TakeDamage(1);
 
         }
+        
         Destroy(gameObject);
+        animator.SetBool("isDestroied", false);
     }
 }

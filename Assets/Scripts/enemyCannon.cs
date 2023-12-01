@@ -9,7 +9,7 @@ public class enemyCannon : MonoBehaviour
     public Transform shootingPoint;
     public Bullet prefab;
 
-    
+
     public void Attack()
     {
         Bullet bullet = Instantiate(prefab, shootingPoint.position, shootingPoint.rotation);
