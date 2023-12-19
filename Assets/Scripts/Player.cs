@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Player : MonoBehaviour
     public AudioClip fireSound, repairSound, damageSound, dieSound;
     private int idMoving = Animator.StringToHash("isMoving");
     public sceneLoader loader;
-
+    private bool canShoot = true;
 
     [Header("Menu Settings")]
     public Canvas menu;
@@ -38,8 +39,9 @@ public class Player : MonoBehaviour
         axisH = Input.GetAxisRaw("Horizontal");
         axisV = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && canShoot)
         {
+            StartCoroutine(Shoot());
             audioSource.PlayOneShot(fireSound);
             for (int i = 0; i < cannons.Length; i++)
             {
@@ -111,4 +113,12 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
         loader.LoadScene("Lose");
     }
+
+    private IEnumerator Shoot()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(2);
+        canShoot = true;
+    }
+
 }

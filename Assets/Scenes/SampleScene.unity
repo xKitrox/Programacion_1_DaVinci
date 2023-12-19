@@ -69673,10 +69673,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1033485761657443084, guid: 312c45ffa8e4ea24da46554bac123ace, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033485762177733289, guid: 312c45ffa8e4ea24da46554bac123ace, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1033485762177733289, guid: 312c45ffa8e4ea24da46554bac123ace, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1772772618}
+    - target: {fileID: 1033485762177733289, guid: 312c45ffa8e4ea24da46554bac123ace, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033485762177733289, guid: 312c45ffa8e4ea24da46554bac123ace, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1033485763151260865, guid: 312c45ffa8e4ea24da46554bac123ace, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -70115,6 +70131,10 @@ PrefabInstance:
       propertyPath: menuPanel
       value: 
       objectReference: {fileID: 1810449801}
+    - target: {fileID: 4547096648246172299, guid: 3f9aefd9f3a601844bf4607b0e98bda5, type: 3}
+      propertyPath: isGamePaused
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f9aefd9f3a601844bf4607b0e98bda5, type: 3}
 --- !u!1001 &5189096740206046725
