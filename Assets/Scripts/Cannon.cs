@@ -7,6 +7,7 @@ public class Cannon : MonoBehaviour
     [Header("Bullet Settings")]
     public float speed;
     public Transform shootingPoint;
+    public Nuke nukePrefab;
     public Bullet prefab;
     private Animator animator;
     private bool isAttacking;
@@ -24,6 +25,12 @@ public class Cannon : MonoBehaviour
             animator.SetBool("isAttacking", true);
             Bullet bullet = Instantiate(prefab, shootingPoint.position, shootingPoint.rotation);
             bullet.speed = speed;
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            animator.SetBool("isAttacking", true);
+            Nuke nuke = Instantiate(nukePrefab, shootingPoint.position, shootingPoint.rotation);
+            nuke.speed = speed;
         }
         else
         {

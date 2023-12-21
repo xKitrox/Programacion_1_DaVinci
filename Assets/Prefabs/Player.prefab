@@ -202,12 +202,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linealForce: 12
   angularForce: 1.5
-  maxiumhealth: 15
-  health: 15
+  maxiumhealth: 30
+  health: 30
   audioSource: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 6000369d647196f4298ecfee95e0a6c3, type: 3}
+  nukeSound: {fileID: 8300000, guid: 3fba292c438c88d498776b54231ec7f9, type: 3}
   repairSound: {fileID: 8300000, guid: 08c852eb36c77bc498f372198b013be4, type: 3}
   damageSound: {fileID: 8300000, guid: b775e1441f1b84442a7402adab4a2227, type: 3}
+  dieSound: {fileID: 0}
+  loader: {fileID: 0}
   menu: {fileID: 0}
 --- !u!82 &4407466820021325778
 AudioSource:
@@ -406,6 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   shootingPoint: {fileID: 1638885292}
+  nukePrefab: {fileID: 8562777076654154928, guid: 05db59e56683bf24ebf4469a0354550d, type: 3}
   prefab: {fileID: 1664112433741201406, guid: 1ce6df884bf21a9469f5f5424541a51f, type: 3}
 --- !u!95 &3920817015122138072
 Animator:

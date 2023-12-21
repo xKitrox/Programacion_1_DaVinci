@@ -5,13 +5,13 @@ public class Player : MonoBehaviour
     [Header("Player Settings")]
     public float linealForce; //mover en linea recta
     public float angularForce; //Rotar
-    public float maxiumhealth = 15f;
-    public float health = 15f;
+    public float maxiumhealth = 30f;
+    public float health = 30f;
     private Rigidbody2D rb;
     private Animator animator;
     private Cannon[] cannons;
     public AudioSource audioSource;
-    public AudioClip fireSound, repairSound, damageSound, dieSound;
+    public AudioClip fireSound, nukeSound, repairSound, damageSound, dieSound;
     private int idMoving = Animator.StringToHash("isMoving");
     public sceneLoader loader;
     private bool canShoot = true;
@@ -43,6 +43,15 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(Shoot());
             audioSource.PlayOneShot(fireSound);
+            for (int i = 0; i < cannons.Length; i++)
+            {
+                cannons[i].Shoot();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Q) && canShoot)
+        {
+            StartCoroutine(NukeShoot());
+            audioSource.PlayOneShot(nukeSound);
             for (int i = 0; i < cannons.Length; i++)
             {
                 cannons[i].Shoot();
@@ -120,5 +129,10 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(2);
         canShoot = true;
     }
-
+    private IEnumerator NukeShoot()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(8);
+        canShoot = true;
+    }
 }

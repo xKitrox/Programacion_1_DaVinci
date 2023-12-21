@@ -1214,6 +1214,8 @@ MonoBehaviour:
 
     Fire: F
 
+    Nuke: Q
+
     enjoy ;)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 932ff19d57bdba44a9cb0742f84b9bf5, type: 2}
