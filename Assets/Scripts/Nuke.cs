@@ -42,6 +42,11 @@ public class Nuke : MonoBehaviour
         {
             collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
         }
+        //damage enemy 2
+        else if (collision.gameObject.layer == 10)
+        {
+            collision.gameObject.GetComponent<Enemy2>().TakeDamage(damage);
+        }
         //damage a player
         else if (collision.gameObject.layer == 3)
         {

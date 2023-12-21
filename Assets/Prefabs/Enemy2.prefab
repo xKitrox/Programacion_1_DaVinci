@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 807621366604921457}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 807621366814055612}
   - component: {fileID: 807621366814055613}
   - component: {fileID: 807621366814055602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 807621366849196434}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DroPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 807621368176702873}
   - component: {fileID: 807621368176702872}
   - component: {fileID: 807621368176702875}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
