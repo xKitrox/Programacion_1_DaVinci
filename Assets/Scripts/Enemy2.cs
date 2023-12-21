@@ -27,7 +27,7 @@ public class Enemy2 : MonoBehaviour
     private Transform[] waypoints;
     public Transform droPoint;
     [SerializeField]
-    private enemy2Cannon enemy2Cannon;
+    private enemy2Cannon enemyCannon;
     [SerializeField]
     private float minRangeShoting = 20f;
     [SerializeField]
@@ -135,7 +135,7 @@ public class Enemy2 : MonoBehaviour
     private IEnumerator shootingCooldown(float interval)
     {
 
-        enemy2Cannon.Attack();
+        enemyCannon.Attack();
         yield return new WaitForSeconds(interval);
         canShoot = true;
     }

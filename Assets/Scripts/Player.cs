@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private int idMoving = Animator.StringToHash("isMoving");
     public sceneLoader loader;
     private bool canShoot = true;
+    private bool canShootNuke = true;
 
     [Header("Menu Settings")]
     public Canvas menu;
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
                 cannons[i].Shoot();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && canShoot)
+        else if (Input.GetKeyDown(KeyCode.Q) && canShootNuke)
         {
             StartCoroutine(NukeShoot());
             audioSource.PlayOneShot(nukeSound);
@@ -131,8 +132,8 @@ public class Player : MonoBehaviour
     }
     private IEnumerator NukeShoot()
     {
-        canShoot = false;
+        canShootNuke = false;
         yield return new WaitForSeconds(8);
-        canShoot = true;
+        canShootNuke = true;
     }
 }
